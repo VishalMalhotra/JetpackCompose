@@ -1,92 +1,52 @@
 package com.prepladder.medical.mydaggerhiltapp
 
 import android.os.Bundle
+import android.widget.Space
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
+import androidx.compose.material.*
 
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextDecoration
-import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.tooling.preview.Preview
+
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import kotlin.random.Random
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Column(Modifier.fillMaxSize()) {
-
-                val color = remember {
-                    mutableStateOf(Color.Yellow)
+            LazyColumn {
+                itemsIndexed(
+                    listOf("this", "is", "Jetpack", "Compose")
+                ) { index, string ->
+                    Text(
+                        text = string,
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(40.dp),
+                    )
                 }
-
-                ColorBox(
-                    Modifier
-                        .weight(0.5f)
-                        .fillMaxSize()
-                ) {
-                    color.value = it
-                }
-                Box(
-                    modifier = Modifier
-                        .background(color = color.value)
-                        .weight(1f)
-                        .fillMaxSize()
-                )
+//                items(5000){
+//
+//                }
 
             }
         }
     }
-
-
-    @Composable
-    fun ColorBox(modifier: Modifier, updateColor: (Color) -> Unit) {
-
-        Box(modifier = modifier
-            .background(Color.Red)
-
-            .clickable {
-                updateColor(
-                    Color(
-                        Random.nextFloat(),
-                        Random.nextFloat(),
-                        Random.nextFloat(),
-                        1f
-
-                    )
-                )
-
-            }
-        )
-    }
-
-
 }

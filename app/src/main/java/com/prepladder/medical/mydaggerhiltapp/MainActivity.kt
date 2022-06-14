@@ -1,52 +1,68 @@
 package com.prepladder.medical.mydaggerhiltapp
 
+
 import android.os.Bundle
-import android.widget.Space
+
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.*
-
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
-
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.runtime.remember
 
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            LazyColumn {
-                itemsIndexed(
-                    listOf("this", "is", "Jetpack", "Compose")
-                ) { index, string ->
-                    Text(
-                        text = string,
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Bold,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(40.dp),
-                    )
-                }
-//                items(5000){
-//
-//                }
 
+            ProfileScreen()
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*            val constraints = ConstraintSet {
+                val greenBox = createRefFor("greenbox")
+                val redbox = createRefFor("redbox")
+
+                constrain(greenBox) {
+                    top.linkTo(parent.top)
+                    start.linkTo(parent.start)
+                    height = Dimension.value(100.dp)
+                    width = Dimension.value(100.dp)
+                }
+
+                constrain(redbox) {
+                    top.linkTo(parent.top)
+                    start.linkTo(greenBox.end)
+                    height = Dimension.value(100.dp)
+                    width = Dimension.value(100.dp)
+                }
+
+                createHorizontalChain(greenBox,redbox,chainStyle = ChainStyle.Packed)
             }
+
+            ConstraintLayout(constraints, modifier = Modifier.fillMaxSize()) {
+                Box(
+                    modifier = Modifier
+                        .background(Color.Green)
+                        .layoutId("greenbox")
+
+                )
+                Box(
+                    modifier = Modifier
+                        .layoutId("redbox")
+                        .background(Color.Red)
+                )
+
+            }*/
         }
     }
 }
